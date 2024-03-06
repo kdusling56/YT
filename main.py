@@ -5,7 +5,7 @@ from pytube import YouTube
 def startConversion():
     try:
         ytLink = link.get()
-        ytObject = Youtube(ytLink)
+        ytObject = YouTube(ytLink)
         mp3 = ytObject.streams.get_audio_only()
         mp3.download()
     except:
@@ -33,8 +33,8 @@ link = customtkinter.CTkEntry(app, width=500, height=50, textvariable=url_var)
 link.pack()
 
 # Download Button
-convert = customtkinter.CTkButton(app, text="Convert", command=startConversion)
-convert.pack(padx =20, pady=20)
+download = customtkinter.CTkButton(app, text="Convert", command=startConversion)
+download.pack(padx =20, pady=20)
 
 # Run app
 app.mainloop()

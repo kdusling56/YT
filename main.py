@@ -6,10 +6,11 @@ def startConversion():
     try:
         ytLink = link.get()
         ytObject = YouTube(ytLink)
-        mp3 = ytObject.streams.get_audio_only()
-        mp3.download()
+        video = ytObject.streams.filter(only_audio=True).first()
+        video.download()
     except:
         print("YouTube link is invalid!")
+        
     print("Download Complete!")
 
 # System Settings

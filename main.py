@@ -2,9 +2,15 @@ import tkinter
 import customtkinter
 from pytube import YouTube
 
-def convert():
+def startConversion():
     try:
-         
+        ytLink = link.get()
+        ytObject = Youtube(ytLink)
+        mp3 = ytObject.streams.get_audio_only()
+        mp3.download()
+    except:
+        print("YouTube link is invalid!")
+    print("Download Complete!")
 
 # System Settings
 
@@ -28,6 +34,7 @@ link.pack()
 
 # Download Button
 convert = customtkinter.CTkButton(app, text="Convert", command=startConversion)
+convert.pack(padx =20, pady=20)
 
 # Run app
 app.mainloop()
